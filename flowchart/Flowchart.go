@@ -66,15 +66,23 @@ func (fc *Flowchart) String() (renderedElement string) {
 	if fc.DefaultEdgeStyle != nil {
 		text += fmt.Sprintf(fc.DefaultEdgeStyle.String(), "default")
 	}
+
 	for _, s := range fc.nodeStyles {
 		text += s.String()
 	}
+
+	text += "\n"
+
 	for _, item := range fc.items {
 		text += item.renderGraph()
 	}
+
+	text += "\n"
+
 	for _, e := range fc.edges {
 		text += e.String()
 	}
+
 	return text
 }
 

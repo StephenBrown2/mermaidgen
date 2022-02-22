@@ -43,18 +43,23 @@ func (n *Node) renderGraph() string {
 	if len(n.Text) > 0 {
 		textbox = strings.Join(n.Text, "<br/>")
 	}
-	text := n.id + fmt.Sprintf(string(n.Shape), textbox) + "\n"
+
+	text := "  " + n.id + fmt.Sprintf(string(n.Shape), textbox) + "\n"
+
 	if n.Style != nil {
-		text += fmt.Sprintf("class %s %s\n", n.id, n.Style.id)
+		text += fmt.Sprintf("  class %s %s\n", n.id, n.Style.id)
 	}
+
 	if n.Link != "" {
 		linktxt := n.Link
 		if n.LinkText != "" {
 			linktxt = n.LinkText
 		}
-		text += fmt.Sprintf("click %s \"%s\" \"%s\"\n",
+
+		text += fmt.Sprintf("  click %s \"%s\" \"%s\"\n",
 			n.id, n.Link, linktxt)
 	}
+
 	return text
 }
 

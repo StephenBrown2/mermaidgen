@@ -29,11 +29,13 @@ func (sg *Subgraph) Flowchart() (topLevel *Flowchart) {
 
 // Implements graphItem, see String() for further details.
 func (sg *Subgraph) renderGraph() string {
-	text := fmt.Sprintln("subgraph", sg.Title)
+	text := fmt.Sprintln("  subgraph", sg.Title)
 	for _, item := range sg.items {
-		text += item.renderGraph()
+		text += "  " + item.renderGraph()
 	}
-	text += "end\n"
+
+	text += "  end\n"
+
 	return text
 }
 
